@@ -1,9 +1,9 @@
 import torch
 from typing import Callable, Optional, List, Literal, Union
 
-ReturnMode = Literal["min", "max", "mean", "median"]
+ReturnMode = Literal["min", "max", "mean", "median", "all"]
 
-
+# copied from https://github.com/triton-lang/triton/blob/cc0cf2d04c39c7571fe0194a8172af37fcd69a7e/python/triton/testing.py#L20-L29
 def _summarize_statistics(
     times: torch.Tensor, quantiles: Optional[List[float]], return_mode: ReturnMode
 ):
@@ -12,8 +12,10 @@ def _summarize_statistics(
         if len(ret) == 1:
             ret = ret[0]
         return ret
+
     if return_mode == "all":
         return times.tolist()
+
     return getattr(torch, return_mode)(times).item()
 
 
