@@ -43,7 +43,7 @@ def do_bench(
         return_mode (str, optional): The statistical measure to return. Options are "min", "max", "mean", "median", or "all". Defaults to "mean".
     """
 
-    assert return_mode in ["min", "max", "mean", "median"]
+    assert return_mode in ["min", "max", "mean", "median", "all"]
 
     fn()
     torch.cuda.synchronize()
