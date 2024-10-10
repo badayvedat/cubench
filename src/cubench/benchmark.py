@@ -19,7 +19,7 @@ def _summarize_statistics(
     return getattr(torch, return_mode)(times).item()
 
 
-# copied from https://github.com/triton-lang/triton/blob/cc0cf2d04c39c7571fe0194a8172af37fcd69a7e/python/triton/testing.py#L95-L162
+# based on https://github.com/triton-lang/triton/blob/cc0cf2d04c39c7571fe0194a8172af37fcd69a7e/python/triton/testing.py#L95-L162
 def do_bench(
     fn: Callable,
     n_warmup: int = 3,
